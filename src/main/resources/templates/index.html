@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+</head>
+<body class="container">
+<h1>Televet!</h1>
+<hr>
+<div class="container px-4 py-5">
+    <img th:src="@{'/img/mascotas.jpg'} " style="width: 950px;height: 700px">
+
+    <div  class="row justify-content-around" >
+        <a th:href="@{'/mascota/lista'}" ><button class="btn btn-primary">Ir a la lista de mascotas</button></a>
+        <a ><button class="btn btn-warning">Contacto y/o dueño</button></a>
+    </div>
+    <br>
+    <div class="row justify-content-around" >
+        <a ><button class="btn btn-info">Servicio</button></a>
+        <a ><button class="btn btn-success">Nuevo responsable</button></a>
+    </div>
+
+</div>
+<!--<a th:href="@{}">Ir a la gestión de empleados</a><br />                 &lt;!&ndash; COMPLETAR &ndash;&gt;-->
+<!--<a th:href="@{}">Ir al historial de empleados</a><br />                &lt;!&ndash; COMPLETAR &ndash;&gt;-->
+<!--<a th:href="@{}">Reportes</a>                &lt;!&ndash; COMPLETAR &ndash;&gt;-->
+</body>
+</html>

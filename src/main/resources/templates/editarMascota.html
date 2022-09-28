@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragmento :: header(titulo='Editar Mascota')"></head>
+
+
+<body>
+
+<h1  th:replace="fragments/fragmento :: cabeceraLista(tabla = 'Editar a una mascota')"></h1>
+
+  <main>
+    <div class="container px-4 py-5">
+
+      <form method="post" th:action="@{'/mascota/save'}" th:object="${mascota}" class="mt-2">
+        <input th:field="*{id}" name="id" type="hidden"/>
+        <input th:field="*{historia}" name="historia" type="hidden"/>
+        <input th:field="*{observaciones}" name="observaciones" type="hidden"/>
+        <input th:field="*{razaOtros}" name="razaOtros" type="hidden"/>
+        <input th:field="*{cuentaIdcuenta.id}" name="cuentaIdcuenta" type="hidden"/>
+
+        <div class="mb-3">
+          <label class="form-label">Nombre </label>
+          <input th:field="*{nombre}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Año</label>
+          <input th:field="*{anho}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sexo</label>
+          <input th:field="*{sexo}" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Escoja la raza</label>
+          <select class="form-select" th:field="*{razaEspecieIdraza}">
+            <option th:each="razas : ${razas}" th:text="${razas.getDescripcion()}"
+                    th:value="${razas.getId()}"></option>
+          </select>
+        </div>
+
+        <a th:href="@{'/mascota'}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Editar mascota</button>
+      </form>
+    </div>
+
+
+
+  </main>
+
+
+
+</body>
+</html>

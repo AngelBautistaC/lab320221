@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragmento :: header(titulo='Ver más acerca de la mascota')"></head>
+
+
+<body>
+
+<h1  th:replace="fragments/fragmento :: cabeceraLista(tabla = 'Ver más acerca de la mascota')"></h1>
+
+
+<main>
+  <div class="container px-4 py-5">
+    <a class="btn btn-secondary ms-auto" th:href="@{'/mascota/lista'}">Regresar</a>
+
+    <div class="mb-3">
+      <label class="form-label">Nombre de la mascota</label>
+      <input th:field="*{mascota.nombre}" type="text" class="form-control" disabled>
+      <label class="form-label">Edad de la mascota</label>
+      <input th:field="*{mascota.anho}" type="text" class="form-control" disabled>
+      <div th:each="serv,index : ${servicio}">
+        <h3 class="form-label" th:text="${'Servicio n°'}+${index.index+1}"></h3>
+
+        <label class="form-label">Hora de inicio</label>
+        <input th:value="*{serv.getHoraInicio()}"  type="text" class="form-control" disabled>
+
+        <label class="form-label">Duracion</label>
+        <input th:value="*{serv.getDuracion()}"  type="text" class="form-control" disabled>
+
+
+        <label class="form-label">Entrega</label>
+        <input th:value="*{serv.getEntrega()}"  type="text" class="form-control" disabled>
+
+
+        <label class="form-label">Nombre del responsable</label>
+        <input th:value="*{serv.getResponsableIdresponsable().getNombre()}"  type="text" class="form-control" disabled>
+
+
+        <label class="form-label">Servicio(s) contratado(s)</label>
+        <div th:each="opcion,index : ${opcionServicio}">
+
+          <input th:value="${'n°'}+${index.index+1}+${': '}+${opcion.getOpcionIdopcion().getDescripcion()}"  type="text" class="form-control" disabled>
+
+
+        </div>
+
+
+        <br>
+     </div>
+
+    </div>
+
+
+  </div>
+  </main>
+
+</body>
+</html>

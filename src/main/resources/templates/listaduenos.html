@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragmento :: header(titulo='Lista de dueños')"></head>
+
+
+<body>
+
+<h1  th:replace="fragments/fragmento :: cabeceraLista(tabla = 'Lista de lso dueños')"></h1>
+
+
+<main>
+  <div class="container px-4 py-5">
+
+    <div class="d-flex mt-3 mb-4">
+      <!--        <a class="btn btn-primary" th:href="@{'/product/new'}">Nuevo Producto</a>-->
+      <a class="btn btn-primary" >Nuevo contacto</a>
+      <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
+    </div>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert">
+      A simple success alert—check it out!
+    </div>
+
+
+    <!--      <form method="post" th:action="@{/shipper/BuscarTransportistas}">-->
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre Mascota</th>
+        <th>Año</th>
+        <th>Sexo</th>
+        <th>Raza</th>
+        <th>Servicios</th>
+        <th>Detalle de Servicio</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="mascota, info : ${listaMascotas}">
+        <td th:text="${info.index + 1}"></td>
+        <td th:text="${mascota.getNombre()}"></td>
+        <td th:text="${mascota.getAnho()}"></td>
+        <td th:text="${mascota.getSexo()}"></td>
+        <td th:text="${mascota.getRazaOtros()}"
+            th:if="${mascota.getIdRaza()==20}"></td>
+        <td th:text="${mascota.getDescripcion().substring(6)}"
+            th:unless="${mascota.getIdRaza()==20}"></td>
+        <td th:text="${mascota.getContadorServicios()}"></td>
+
+        <td><a  class="btn btn-primary"
+                th:href="@{'/mascota/vermas'+'?id='+${mascota.getId()}}"
+        >Ver más</a>
+        </td>
+
+        <td><a  class="btn btn-primary"
+                th:href="@{'/mascota/editar'+'?id='+${mascota.getId()}}"
+        >Editar</a>
+        </td>
+        <td ><a class="btn btn-danger"
+                th:href="@{'/mascota/delete'+'?id='+${mascota.getId()}}">Borrar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>
